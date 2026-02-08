@@ -38,6 +38,8 @@ FoMON3D is an innovative Fomo3D game designed to raise funds for the Agent Treas
 
 ## 🎮 游戏流程 | Game Flow
 
+### 简化流程 | Simple Flow
+
 ```
 1. 用户存入 $MON → User deposits $MON
                     ↓
@@ -51,6 +53,7 @@ FoMON3D is an innovative Fomo3D game designed to raise funds for the Agent Treas
     ├─ 兑换 (7天队列) → Redeem to $MON (7-day queue)
     └─ 在 DEX 卖出 → Sell on DEX
 ```
+![FoMON3D](a3d6cac1950450a1afc934f1ed918110.png)
 
 ---
 
