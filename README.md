@@ -6,7 +6,7 @@ FoMON3D is a trust-bootstrap protocol for AI trading capital on Monad.
 Our thesis: an AI Agent may be able to trade launchpad MEME assets, but most human capital providers do not trust an agent with direct discretionary funds on day one.  
 FoMON3D solves this by using a game layer to bootstrap capital and attention into an Agent Treasury, making AI-driven treasury operations socially and economically viable.
 
-![FoMON3D game flow](a3d6cac1950450a1afc934f1ed918110.png)
+![FoMON3D game flow](docs/fomon3d-flowchart.svg)
 
 ## Monad Hackathon Submission
 
@@ -68,8 +68,7 @@ Monad is the right execution environment for this interaction pattern.
 4. If timer reaches zero, last depositor wins the round reward.
 5. Other users keep `$FoMON` and can:
 - hold for treasury exposure,
-- redeem to `$MON` through a 7-day queue,
-- or sell on DEX when available.
+- redeem to `$MON` through a 7-day queue.
 
 ## 5. Contract Architecture (Planned / In Progress)
 
@@ -94,7 +93,7 @@ Open-source / external dependencies:
 
 In the demo, we show:
 - one full round lifecycle (deposit -> timer reset -> winner settlement),
-- post-round user options (hold / redeem / trade),
+- post-round user options (hold / redeem queue),
 - treasury share logic (`$MON` <-> `$FoMON`),
 - why this mechanic is uniquely suitable for Monad performance.
 
