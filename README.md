@@ -130,7 +130,8 @@ For hackathon follow-up, please contact the FoMON3D team.
 | Network | Monad Testnet |
 | RPC | `https://testnet-rpc.monad.xyz` |
 | Chain ID | `10143` |
-| Contracts | `FoMONToken`, `GameVault` (see `contracts/`; after deploy, set addresses in `frontend/lib/contracts.ts`) |
+| FoMONToken | `0xd08934afd2affffacc8ccfffde8a7ca5a61f2549` |
+| GameVault | `0x5f0dae5fc34b739f62e63bdc5dabfb830cade5a3` |
 
 **Deploy** (testnet MON for gas; do not commit private key):
 
