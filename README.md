@@ -14,7 +14,7 @@ FoMON3D solves this by using a game layer to bootstrap capital and attention int
 - Category: Consumer dApp / On-chain Game
 - Network: Monad
 - Team: FoMON3D
-- Live demo: `TBD`
+- Live demo: https://fomon3d.vercel.app/
 - Demo video: `TBD`
 - Contract repo / code: `TBD`
 
@@ -144,7 +144,7 @@ Put the printed FoMONToken and GameVault addresses into `frontend/lib/contracts.
 
 **Demo flow**
 
-1. Start frontend: `cd frontend && npm install && npm run dev`, open http://localhost:3000 .
+1. **Online**: Open https://fomon3d.vercel.app/ — or run locally: `cd frontend && npm install && npm run dev`, then http://localhost:3000 .
 2. Add Monad Testnet in wallet (RPC and Chain ID above), then connect.
 3. **Deposit MON** → 30s countdown resets, you receive $FoMON 1:1.
 4. When countdown hits zero, the **winner** banner appears; any wallet can click **Settle & start next round** to pay the winner and start the next round.
