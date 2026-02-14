@@ -130,7 +130,8 @@ Monad 是该交互模型的匹配执行环境。
 | 网络 | Monad Testnet |
 | RPC | `https://testnet-rpc.monad.xyz` |
 | Chain ID | `10143` |
-| 合约 | `FoMONToken`、`GameVault`（见 `contracts/`，部署后地址写入 `frontend/lib/contracts.ts`） |
+| FoMONToken | `0xd08934afd2affffacc8ccfffde8a7ca5a61f2549` |
+| GameVault | `0x5f0dae5fc34b739f62e63bdc5dabfb830cade5a3` |
 
 **部署**（需测试网 MON 付 gas，私钥勿提交）：
 
