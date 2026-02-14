@@ -119,6 +119,38 @@ This repository includes AI-generated content.
 
 For hackathon follow-up, please contact the FoMON3D team.
 
+## 12. Demo Flow & Contract Info
+
+**Requirements**: Node.js >= 20 (frontend), Foundry (contracts).
+
+**Contracts (Monad Testnet)**
+
+| Item | Value |
+|------|--------|
+| Network | Monad Testnet |
+| RPC | `https://testnet-rpc.monad.xyz` |
+| Chain ID | `10143` |
+| Contracts | `FoMONToken`, `GameVault` (see `contracts/`; after deploy, set addresses in `frontend/lib/contracts.ts`) |
+
+**Deploy** (testnet MON for gas; do not commit private key):
+
+```bash
+cd contracts
+PRIVATE_KEY=<your_key> forge script script/Deploy.s.sol --rpc-url https://testnet-rpc.monad.xyz --broadcast --chain-id 10143
+```
+
+Put the printed FoMONToken and GameVault addresses into `frontend/lib/contracts.ts` under `10143` as `fomonToken` and `gameVault`.
+
+**Demo flow**
+
+1. Start frontend: `cd frontend && npm install && npm run dev`, open http://localhost:3000 .
+2. Add Monad Testnet in wallet (RPC and Chain ID above), then connect.
+3. **Deposit MON** → 30s countdown resets, you receive $FoMON 1:1.
+4. When countdown hits zero, the **winner** banner appears; any wallet can click **Settle & start next round** to pay the winner and start the next round.
+5. **Redeem**: In the Redeem section you can queue your $FoMON for the 7-day redeem; queue status is shown on the page.
+
+For local chain: Anvil RPC `http://127.0.0.1:8545`, Chain ID `31337`; configure the deployed addresses in `contracts.ts` for that chain.
+
 ---
 
-Last Updated: February 11, 2026
+Last Updated: February 15, 2026
