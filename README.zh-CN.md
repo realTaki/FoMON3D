@@ -14,7 +14,7 @@ FoMON3D 用游戏机制先聚合资金与注意力，再把资金沉淀进 Agent
 - 赛道：Consumer dApp / On-chain Game
 - 网络：Monad
 - 团队：FoMON3D
-- 在线演示：`TBD`
+- 在线演示：https://fomon3d.vercel.app/
 - 演示视频：`TBD`
 - 合约仓库 / 代码：`TBD`
 
@@ -144,7 +144,7 @@ PRIVATE_KEY=<你的私钥> forge script script/Deploy.s.sol --rpc-url https://te
 
 **Demo 流程**
 
-1. 启动前端：`cd frontend && npm install && npm run dev`，打开 http://localhost:3000 。
+1. **在线**：打开 https://fomon3d.vercel.app/ 即可体验；或本地运行：`cd frontend && npm install && npm run dev`，再访问 http://localhost:3000 。
 2. 钱包添加 Monad 测试网（RPC 与 Chain ID 见上表），连接钱包。
 3. **存入 MON** → 倒计时重置 30s，获得等量 $FoMON。
 4. 倒计时归零后出现**赢家横幅**，任意钱包可点 **Settle & start next round** 结算并开启下一轮。
