@@ -25,10 +25,10 @@ export function RedeemQueue() {
 
   if (!address) return null;
   if (redeemAmount == null || redeemUnlockAt == null) return null;
-  if (redeemAmount === 0n) return null;
+  if (typeof redeemAmount !== "bigint" || redeemAmount === BigInt(0)) return null;
 
   const amountStr = formatEther(redeemAmount);
-  const unlockTimestamp = Number(redeemUnlockAt);
+  const unlockTimestamp = Number(typeof redeemUnlockAt === "bigint" ? redeemUnlockAt : 0);
   const unlockDate = new Date(unlockTimestamp * 1000);
   const now = Date.now() / 1000;
   const isUnlocked = now >= unlockTimestamp;

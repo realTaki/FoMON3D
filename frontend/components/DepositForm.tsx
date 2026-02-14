@@ -32,13 +32,13 @@ export function DepositForm({ onSuccess }: { onSuccess?: () => void }) {
 
   const handleDeposit = () => {
     const wei = parseEther(amount || "0");
-    if (wei === 0n) return;
+    if (wei === BigInt(0)) return;
     writeContract({
       address: gameVault,
       abi: gameVaultAbiJson,
       functionName: "deposit",
       value: wei,
-    });
+    } as Parameters<typeof writeContract>[0] & { value: bigint });
   };
 
   if (!address)

@@ -37,9 +37,9 @@ export function WinnerBanner({ onSettled }: { onSettled?: () => void }) {
   }, [error]);
 
   const now = Math.floor(Date.now() / 1000);
-  const ended = deadline != null && BigInt(now) >= deadline;
+  const ended = typeof deadline === "bigint" && BigInt(now) >= deadline;
   const winner =
-    ended && lastDepositor && lastDepositor !== "0x0000000000000000000000000000000000000000"
+    ended && typeof lastDepositor === "string" && lastDepositor !== "0x0000000000000000000000000000000000000000"
       ? `${lastDepositor.slice(0, 6)}…${lastDepositor.slice(-4)}`
       : null;
 

@@ -33,7 +33,7 @@ export function RedeemCta() {
   }, [error]);
 
   const handleRedeem = () => {
-    if (!balance || balance === 0n) return;
+    if (typeof balance !== "bigint" || balance === BigInt(0)) return;
     writeContract({
       address: gameVault,
       abi: gameVaultAbiJson,
@@ -44,8 +44,8 @@ export function RedeemCta() {
 
   if (!address) return null;
 
-  const balanceStr = balance != null ? formatEther(balance) : "0";
-  const hasBalance = balance != null && balance > 0n;
+  const balanceStr = typeof balance === "bigint" ? formatEther(balance) : "0";
+  const hasBalance = typeof balance === "bigint" && balance > BigInt(0);
 
   return (
     <div className="space-y-4">

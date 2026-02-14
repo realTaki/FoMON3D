@@ -27,7 +27,7 @@ export function BalanceCard() {
   if (!address) return null;
 
   const balanceStr =
-    balance != null ? formatEther(balance) : "--";
+    typeof balance === "bigint" ? formatEther(balance) : "--";
   const short = (addr: string) =>
     `${addr.slice(0, 6)}…${addr.slice(-4)}`;
 
@@ -40,7 +40,7 @@ export function BalanceCard() {
         <p className="font-mono text-2xl text-[#00fff5]">{balanceStr}</p>
         <p className="text-sm text-slate-500">
           Last depositor:{" "}
-          {lastDepositor && lastDepositor !== "0x0000000000000000000000000000000000000000"
+          {typeof lastDepositor === "string" && lastDepositor !== "0x0000000000000000000000000000000000000000"
             ? short(lastDepositor)
             : "—"}
         </p>
