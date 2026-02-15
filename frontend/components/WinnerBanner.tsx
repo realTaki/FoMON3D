@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useReadContract, useWriteContract, useChainId } from "wagmi";
 import { toast } from "sonner";
 import { getContractAddresses } from "@/lib/contracts";
@@ -36,7 +36,6 @@ export function WinnerBanner({ onSettled }: { onSettled?: () => void }) {
     if (error) toast.error(friendlyError(error.message));
   }, [error]);
 
-  const now = Math.floor(Date.now() / 1000);
   const ended = typeof deadline === "bigint" && BigInt(now) >= deadline;
   const winner =
     ended && typeof lastDepositor === "string" && lastDepositor !== "0x0000000000000000000000000000000000000000"
@@ -59,7 +58,7 @@ export function WinnerBanner({ onSettled }: { onSettled?: () => void }) {
         Round winner: {winner ?? "—"}
       </p>
       <p className="text-slate-500 text-xs mb-3">
-        Any connected wallet can settle: pays the winner ~80% of the round pool and starts the next round.
+        Any connected wallet can settle: queues ~80% reward to winner and starts the next round.
       </p>
       <Button variant="neon" onClick={handleSettle} disabled={isPending}>
         {isPending ? "Settling…" : "Settle & start next round"}
@@ -67,3 +66,11 @@ export function WinnerBanner({ onSettled }: { onSettled?: () => void }) {
     </div>
   );
 }
+  const [now, setNow] = useState(() => Math.floor(Date.now() / 1000));
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setNow(Math.floor(Date.now() / 1000));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, []);
