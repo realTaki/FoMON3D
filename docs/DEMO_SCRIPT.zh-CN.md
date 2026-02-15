@@ -25,7 +25,7 @@
 ## 2. 核心玩法（0:35 - 1:15）
 
 画面：
-- 展示流程图图片：`docs/fomon3d-flowchart.svg`
+- 展示流程图图片：`flowchart.png`
 - 逐步高亮 1 到 5 步
 
 旁白：

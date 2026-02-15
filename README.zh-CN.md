@@ -6,7 +6,7 @@ FoMON3D 的核心不是“再做一个链游”，而是为 AI Agent 金库做�
 我们的判断是：AI Agent 也许有能力在 Launchpad 上交易 MEME，但人类出资人并不会在第一天就把资金直接交给 AI 自主操作。  
 FoMON3D 用游戏机制先聚合资金与注意力，再把资金沉淀进 Agent Treasury，让 AI 策略尝试在社会信任和经济激励上都变得可行。
 
-![FoMON3D game flow](docs/fomon3d-flowchart.svg)
+![FoMON3D game flow](flowchart.png)
 
 ## Monad Hackathon 提交信息
 
@@ -43,6 +43,8 @@ FoMON3D 把这个问题转化为可参与的资金形成过程：
 FoMON3D 的创新是“把信任转化为资本”，通过双层结构实现：
 - 回合层（FOMO 游戏）：每次有效存入都会重置 30 秒倒计时，最后存入者拿走本轮奖励。
 - 金库层（份额系统）：用户存入后铸造 `$FoMON`，对应金库净值（NAV）和未来收益敞口。
+
+在更新后的流程图中，中心模块标注为 `FoMON 3D`，资金沉淀到 `Agent managed Vault`，并通过 Nad.fun 发射板策略与 TWAP 卖出路径形成收益闭环。
 
 这使得用户参与不再只是一次性博彩，而是阶段性的信任建立：
 - 先通过熟悉的游戏机制进入，
