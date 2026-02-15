@@ -31,8 +31,17 @@ export function DepositForm({ onSuccess }: { onSuccess?: () => void }) {
   }, [error]);
 
   const handleDeposit = () => {
-    const wei = parseEther(amount || "0");
-    if (wei === BigInt(0)) return;
+    let wei = BigInt(0);
+    try {
+      wei = parseEther((amount || "0").trim());
+    } catch {
+      toast.error("Invalid MON amount format.");
+      return;
+    }
+    if (wei === BigInt(0)) {
+      toast.error("Amount must be greater than 0.");
+      return;
+    }
     writeContract({
       address: gameVault,
       abi: gameVaultAbiJson,

@@ -15,8 +15,8 @@ const addresses: Record<number, { fomonToken: Address; gameVault: Address }> = {
     gameVault: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" as Address,
   },
   10143: {
-    fomonToken: "0xd08934afd2affffacc8ccfffde8a7ca5a61f2549" as Address,
-    gameVault: "0x5f0dae5fc34b739f62e63bdc5dabfb830cade5a3" as Address,
+    fomonToken: "0xD08934AFD2AfFfFaCC8CcFFfDe8a7Ca5A61f2549" as Address,
+    gameVault: "0x5f0DAE5Fc34b739f62E63BdC5DabfB830cADe5a3" as Address,
   },
 };
 
