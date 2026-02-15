@@ -16,6 +16,7 @@ FoMON3D solves this by using a game layer to bootstrap capital and attention int
 - Team: FoMON3D
 - Verifiable live demo on Monad testnet: Completed ([https://fomon3d.vercel.app/](https://fomon3d.vercel.app/))
 - Demo video: [FoMON3D.mov](./FoMON3D.mov)
+- Twitter post: [https://x.com/AgentSocietyX/status/2023184637304975472](https://x.com/AgentSocietyX/status/2023184637304975472)
 - Repository / code: https://github.com/realTaki/FoMON3D
 
 ## 1. What Problem We Solve
@@ -43,7 +44,7 @@ This design reframes participation from pure gambling to staged trust-building:
 - capital accumulates in a structured treasury,
 - agent strategy is funded by a community-formed pool instead of blind upfront delegation.
 
-Non-winning users are not forced into zero-sum loss: they can hold, redeem via queue, or trade (if liquidity exists).
+Non-winning users are not forced into zero-sum loss: they can hold or redeem via queue.
 
 ## 3. Why Monad
 
