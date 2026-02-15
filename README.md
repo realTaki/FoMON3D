@@ -1,6 +1,6 @@
 # FoMON3D
 
-[中文版本](README.zh-CN.md) | [Demo Script (CN)](docs/DEMO_SCRIPT.zh-CN.md)
+[中文版本](README.zh-CN.md)
 
 FoMON3D is a trust-bootstrap protocol for AI trading capital on Monad.  
 Our thesis: an AI Agent may be able to trade launchpad MEME assets, but most human capital providers do not trust an agent with direct discretionary funds on day one.  
