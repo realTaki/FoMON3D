@@ -14,7 +14,7 @@ FoMON3D 用游戏机制先聚合资金与注意力，再把资金沉淀进 Agent
 - 赛道：Consumer dApp / On-chain Game
 - 网络：Monad
 - 团队：FoMON3D
-- 在线演示：`TBD`
+- 在线演示：https://fomon3d.vercel.app/
 - 演示视频：`TBD`
 - 合约仓库 / 代码：`TBD`
 
@@ -119,6 +119,39 @@ Monad 是该交互模型的匹配执行环境。
 
 如需黑客松后续沟通，请联系 FoMON3D 团队。
 
+## 12. Demo 流程与合约信息
+
+**环境**：Node.js >= 20（前端）、Foundry（合约）。
+
+**合约（Monad 测试网）**
+
+| 项目 | 值 |
+|------|-----|
+| 网络 | Monad Testnet |
+| RPC | `https://testnet-rpc.monad.xyz` |
+| Chain ID | `10143` |
+| FoMONToken | `0xd08934afd2affffacc8ccfffde8a7ca5a61f2549` |
+| GameVault | `0x5f0dae5fc34b739f62e63bdc5dabfb830cade5a3` |
+
+**部署**（需测试网 MON 付 gas，私钥勿提交）：
+
+```bash
+cd contracts
+PRIVATE_KEY=<你的私钥> forge script script/Deploy.s.sol --rpc-url https://testnet-rpc.monad.xyz --broadcast --chain-id 10143
+```
+
+将终端输出的 FoMONToken、GameVault 地址填入 `frontend/lib/contracts.ts` 中 `10143` 的 `fomonToken`、`gameVault`。
+
+**Demo 流程**
+
+1. **在线**：打开 https://fomon3d.vercel.app/ 即可体验；或本地运行：`cd frontend && npm install && npm run dev`，再访问 http://localhost:3000 。
+2. 钱包添加 Monad 测试网（RPC 与 Chain ID 见上表），连接钱包。
+3. **存入 MON** → 倒计时重置 30s，获得等量 $FoMON。
+4. 倒计时归零后出现**赢家横幅**，任意钱包可点 **Settle & start next round** 结算并开启下一轮。
+5. **赎回**：在 Redeem 区可把当前 $FoMON 加入 7 天赎回队列（队列状态在页面上展示）。
+
+本地链：Anvil RPC `http://127.0.0.1:8545`、Chain ID `31337`，部署后同样在 `contracts.ts` 中配置对应地址。
+
 ---
 
-最后更新：2026 年 2 月 11 日
+最后更新：2026 年 2 月 15 日
