@@ -113,7 +113,7 @@ In the demo, we show:
 
 This repository includes AI-generated content.
 - Generated with: Codex
-- Model version: GPT-5
+- Model version: GPT-5.3-Codex
 
 ## 11. Contact
 
@@ -130,8 +130,8 @@ For hackathon follow-up, please contact the FoMON3D team.
 | Network | Monad Testnet |
 | RPC | `https://testnet-rpc.monad.xyz` |
 | Chain ID | `10143` |
-| FoMONToken | `0xd08934afd2affffacc8ccfffde8a7ca5a61f2549` |
-| GameVault | `0x5f0dae5fc34b739f62e63bdc5dabfb830cade5a3` |
+| FoMONToken | `0xD08934AFD2AfFfFaCC8CcFFfDe8a7Ca5A61f2549` |
+| GameVault | `0x5f0DAE5Fc34b739f62E63BdC5DabfB830cADe5a3` |
 
 **Deploy** (testnet MON for gas; do not commit private key):
 

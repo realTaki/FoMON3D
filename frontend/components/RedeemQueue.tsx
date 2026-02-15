@@ -1,6 +1,7 @@
 "use client";
 
 import { useAccount, useReadContract, useChainId } from "wagmi";
+import { useEffect, useState } from "react";
 import { formatEther } from "viem";
 import { getContractAddresses } from "@/lib/contracts";
 import { gameVaultAbiJson } from "@/lib/contracts";
@@ -30,7 +31,6 @@ export function RedeemQueue() {
   const amountStr = formatEther(redeemAmount);
   const unlockTimestamp = Number(typeof redeemUnlockAt === "bigint" ? redeemUnlockAt : 0);
   const unlockDate = new Date(unlockTimestamp * 1000);
-  const now = Date.now() / 1000;
   const isUnlocked = now >= unlockTimestamp;
   const unlockStr = isUnlocked
     ? "Ready to claim"
@@ -46,3 +46,11 @@ export function RedeemQueue() {
     </div>
   );
 }
+  const [now, setNow] = useState(() => Date.now() / 1000);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setNow(Date.now() / 1000);
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, []);

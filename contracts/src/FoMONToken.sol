@@ -13,22 +13,28 @@ contract FoMONToken {
     mapping(address => mapping(address => uint256)) public allowance;
 
     address public vault;
+    address public immutable owner;
 
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
     error OnlyVault();
     error VaultAlreadySet();
+    error Unauthorized();
     error InsufficientBalance();
     error InsufficientAllowance();
+    error ZeroAddress();
 
     constructor(address _vault) {
         vault = _vault;
+        owner = msg.sender;
     }
 
     /// @notice Set vault once (for two-step deploy: Token with 0, then Vault, then setVault).
     function setVault(address _vault) external {
+        if (msg.sender != owner) revert Unauthorized();
         if (vault != address(0)) revert VaultAlreadySet();
+        if (_vault == address(0)) revert ZeroAddress();
         vault = _vault;
     }
 
@@ -51,6 +57,7 @@ contract FoMONToken {
     }
 
     function transfer(address to, uint256 amount) external returns (bool) {
+        if (to == address(0)) revert ZeroAddress();
         if (balanceOf[msg.sender] < amount) revert InsufficientBalance();
         balanceOf[msg.sender] -= amount;
         balanceOf[to] += amount;
@@ -65,6 +72,7 @@ contract FoMONToken {
     }
 
     function transferFrom(address from, address to, uint256 amount) external returns (bool) {
+        if (to == address(0)) revert ZeroAddress();
         if (allowance[from][msg.sender] < amount) revert InsufficientAllowance();
         if (balanceOf[from] < amount) revert InsufficientBalance();
         allowance[from][msg.sender] -= amount;
