@@ -14,8 +14,8 @@ FoMON3D 用游戏机制先聚合资金与注意力，再把资金沉淀进 Agent
 - 赛道：`Agent+Token Track`
 - 网络：Monad
 - 团队：FoMON3D
-- 可验证在线演示（Monad 测试网）：已完成（`https://fomon3d.vercel.app/`）
-- 演示视频：`TBD`
+- 可验证在线演示（Monad 测试网）：已完成（[https://fomon3d.vercel.app/](https://fomon3d.vercel.app/)）
+- 演示视频：[FoMON3D.mov](./FoMON3D.mov)
 - 仓库 / 代码：https://github.com/realTaki/FoMON3D
 
 ## 1. 我们解决的问题
@@ -141,10 +141,8 @@ PRIVATE_KEY=<你的私钥> forge script script/Deploy.s.sol --rpc-url https://te
 1. **在线**：打开 https://fomon3d.vercel.app/ 即可体验；或本地运行：`cd frontend && npm install && npm run dev`，再访问 http://localhost:3000 。
 2. 钱包添加 Monad 测试网（RPC 与 Chain ID 见上表），连接钱包。
 3. **存入 MON** → 倒计时重置 30s，获得等量 $FoMON。
-4. 倒计时归零后出现**赢家横幅**，任意钱包可点 **Settle & start next round** 结算并开启下一轮。
-5. **赎回**：在 Redeem 区可把当前 $FoMON 加入 7 天赎回队列（队列状态在页面上展示）。
-
-本地链：Anvil RPC `http://127.0.0.1:8545`、Chain ID `31337`，部署后同样在 `contracts.ts` 中配置对应地址。
+4. 倒计时归零后出现**赢家横幅**，任意钱包可点 **Settle & start next round** 进行奖励入队并开启下一轮。
+5. 赢家可领取已入队奖励；其他用户可在 Redeem 区加入 7 天赎回队列（页面会展示队列状态）。
 
 ---
 

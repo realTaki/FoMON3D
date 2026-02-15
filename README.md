@@ -14,8 +14,8 @@ FoMON3D solves this by using a game layer to bootstrap capital and attention int
 - Track: `Agent+Token Track`
 - Network: Monad
 - Team: FoMON3D
-- Verifiable live demo on Monad testnet: Completed (`https://fomon3d.vercel.app/`)
-- Demo video: `TBD`
+- Verifiable live demo on Monad testnet: Completed ([https://fomon3d.vercel.app/](https://fomon3d.vercel.app/))
+- Demo video: [FoMON3D.mov](./FoMON3D.mov)
 - Repository / code: https://github.com/realTaki/FoMON3D
 
 ## 1. What Problem We Solve
@@ -141,10 +141,8 @@ Put the printed FoMONToken and GameVault addresses into `frontend/lib/contracts.
 1. **Online**: Open https://fomon3d.vercel.app/ — or run locally: `cd frontend && npm install && npm run dev`, then http://localhost:3000 .
 2. Add Monad Testnet in wallet (RPC and Chain ID above), then connect.
 3. **Deposit MON** → 30s countdown resets, you receive $FoMON 1:1.
-4. When countdown hits zero, the **winner** banner appears; any wallet can click **Settle & start next round** to pay the winner and start the next round.
-5. **Redeem**: In the Redeem section you can queue your $FoMON for the 7-day redeem; queue status is shown on the page.
-
-For local chain: Anvil RPC `http://127.0.0.1:8545`, Chain ID `31337`; configure the deployed addresses in `contracts.ts` for that chain.
+4. When countdown hits zero, the **winner** banner appears; any wallet can click **Settle & start next round** to queue reward and start the next round.
+5. Winner claims queued reward; users can also queue redeem in the Redeem section (7-day window shown on page).
 
 ---
 
