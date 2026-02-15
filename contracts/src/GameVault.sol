@@ -62,6 +62,9 @@ contract GameVault {
     }
 
     /// @notice Request redeem: lock FoMON and set unlock time. MVP does not implement claimRedeem.
+    /// @dev Multiple calls to this function will accumulate the requested amount and reset the unlock time
+    ///      to 7 days from the most recent call. This means all queued amounts for a user unlock together
+    ///      at the same time, which is always 7 days after the last requestRedeem call.
     function requestRedeem(uint256 amount) external {
         if (amount == 0) revert ZeroRedeem();
         if (fomonToken.balanceOf(msg.sender) < amount) revert InsufficientFoMON();
