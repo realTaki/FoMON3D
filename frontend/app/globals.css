@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/* Cyberpunk neon design system */
+:root {
+  --background: #0a0a0f;
+  --foreground: #e2e8f0;
+  --neon-cyan: #00fff5;
+  --neon-magenta: #ff00ff;
+  --neon-blue: #0ea5e9;
+  --card: #0f0f18;
+  --card-border: rgba(0, 255, 245, 0.3);
+  --muted: #64748b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-magenta: var(--neon-magenta);
+  --color-neon-blue: var(--neon-blue);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-orbitron), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+}
+
+/* Neon glow utilities */
+.neon-glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 255, 245, 0.4);
+}
+.neon-glow-magenta {
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+}
+.neon-text-cyan {
+  text-shadow: 0 0 10px rgba(0, 255, 245, 0.8);
+  color: var(--neon-cyan);
+}
+.neon-border-cyan {
+  border: 1px solid rgba(0, 255, 245, 0.5);
+}
+.neon-border-magenta {
+  border: 1px solid rgba(255, 0, 255, 0.5);
+}
