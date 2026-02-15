@@ -16,7 +16,7 @@ export default function Home() {
   const chainId = useChainId();
   const { isConnected } = useAccount();
   const queryClient = useQueryClient();
-  const chainIdSafe = typeof chainId === "number" ? chainId : 31337;
+  const chainIdSafe = typeof chainId === "number" ? chainId : 10143;
   const { gameVault } = getContractAddresses(chainIdSafe);
 
   const configured = isContractConfigured(chainIdSafe);
