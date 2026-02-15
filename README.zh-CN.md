@@ -11,20 +11,12 @@ FoMON3D 用游戏机制先聚合资金与注意力，再把资金沉淀进 Agent
 ## Monad Hackathon 提交信息
 
 - 项目名称：`FoMON3D`
-- 赛道：Consumer dApp / On-chain Game
+- 赛道：`Agent+Token Track`
 - 网络：Monad
 - 团队：FoMON3D
-- 在线演示：https://fomon3d.vercel.app/
+- 可验证在线演示（Monad 测试网）：已完成（`https://fomon3d.vercel.app/`）
 - 演示视频：`TBD`
-- 合约仓库 / 代码：`TBD`
-
-### 要求对齐检查清单
-
-- [ ] 在 Monad（或测试网）上可验证的可运行演示。
-- [x] 清晰说明本项目原创部分。
-- [x] 清晰划分复用组件和外部依赖边界。
-- [x] 明确解释为何该项目需要 Monad 性能特性。
-- [x] 具备新颖玩法与代币机制（非简单改壳复制）。
+- 仓库 / 代码：https://github.com/realTaki/FoMON3D
 
 ## 1. 我们解决的问题
 
