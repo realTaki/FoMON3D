@@ -16,6 +16,7 @@ FoMON3D 用游戏机制先聚合资金与注意力，再把资金沉淀进 Agent
 - 团队：FoMON3D
 - 可验证在线演示（Monad 测试网）：已完成（[https://fomon3d.vercel.app/](https://fomon3d.vercel.app/)）
 - 演示视频：[FoMON3D.mov](./FoMON3D.mov)
+- 推文：[https://x.com/AgentSocietyX/status/2023184637304975472](https://x.com/AgentSocietyX/status/2023184637304975472)
 - 仓库 / 代码：https://github.com/realTaki/FoMON3D
 
 ## 1. 我们解决的问题
@@ -43,7 +44,7 @@ FoMON3D 的创新是“把信任转化为资本”，通过双层结构实现：
 - 再通过结构化金库沉淀资金，
 - 最终由社区形成的资金池支持 Agent 策略运作，而不是盲目信任式委托。
 
-未获胜用户并非零和归零，可继续持有、排队赎回，或在有流动性时交易。
+未获胜用户并非零和归零，可继续持有或进入赎回队列。
 
 ## 3. 为什么是 Monad
 
