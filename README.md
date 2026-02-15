@@ -11,20 +11,12 @@ FoMON3D solves this by using a game layer to bootstrap capital and attention int
 ## Monad Hackathon Submission
 
 - Project name: `FoMON3D`
-- Category: Consumer dApp / On-chain Game
+- Track: `Agent+Token Track`
 - Network: Monad
 - Team: FoMON3D
-- Live demo: https://fomon3d.vercel.app/
+- Verifiable live demo on Monad testnet: Completed (`https://fomon3d.vercel.app/`)
 - Demo video: `TBD`
-- Contract repo / code: `TBD`
-
-### Requirement Alignment Checklist
-
-- [ ] Working demo on Monad (or testnet) that judges can verify.
-- [x] Clear explanation of what is original in this project.
-- [x] Clear boundary of reused components and dependencies.
-- [x] Explicit explanation of why Monad performance is required.
-- [x] Novel game + token mechanism (not a clone with minor edits).
+- Repository / code: https://github.com/realTaki/FoMON3D
 
 ## 1. What Problem We Solve
 
