@@ -1,6 +1,6 @@
 # FoMON3D
 
-[English README](README.md) | [演示脚本](docs/DEMO_SCRIPT.zh-CN.md)
+[English README](README.md)
 
 FoMON3D 的核心不是“再做一个链游”，而是为 AI Agent 金库做“信任冷启动”。  
 我们的判断是：AI Agent 也许有能力在 Launchpad 上交易 MEME，但人类出资人并不会在第一天就把资金直接交给 AI 自主操作。  
