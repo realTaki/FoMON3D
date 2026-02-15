@@ -21,7 +21,7 @@ const addresses: Record<number, { fomonToken: Address; gameVault: Address }> = {
 };
 
 export function getContractAddresses(chainId: number) {
-  return addresses[chainId] ?? addresses[31337];
+  return addresses[chainId] ?? addresses[10143];
 }
 
 export function isContractConfigured(chainId: number): boolean {
