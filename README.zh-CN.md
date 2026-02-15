@@ -113,7 +113,7 @@ Monad 是该交互模型的匹配执行环境。
 
 本仓库包含 AI 生成内容。
 - 生成工具：Codex
-- 模型版本：GPT-5
+- 模型版本：GPT-5.3-Codex
 
 ## 11. 联系方式
 
@@ -130,8 +130,8 @@ Monad 是该交互模型的匹配执行环境。
 | 网络 | Monad Testnet |
 | RPC | `https://testnet-rpc.monad.xyz` |
 | Chain ID | `10143` |
-| FoMONToken | `0xd08934afd2affffacc8ccfffde8a7ca5a61f2549` |
-| GameVault | `0x5f0dae5fc34b739f62e63bdc5dabfb830cade5a3` |
+| FoMONToken | `0xD08934AFD2AfFfFaCC8CcFFfDe8a7Ca5A61f2549` |
+| GameVault | `0x5f0DAE5Fc34b739f62E63BdC5DabfB830cADe5a3` |
 
 **部署**（需测试网 MON 付 gas，私钥勿提交）：
 

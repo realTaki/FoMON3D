@@ -19,15 +19,22 @@ contract GameVault {
     mapping(address => uint256) public redeemAmount;
     mapping(address => uint256) public redeemUnlockAt;
     uint256 public constant REDEEM_DELAY = 7 days;
+    mapping(address => uint256) public pendingRewards;
+    uint256 public totalPendingRewards;
 
     event Deposited(address indexed user, uint256 amount, uint256 newDeadline);
     event RoundSettled(uint256 indexed roundId, address indexed winner, uint256 reward);
+    event RewardQueued(address indexed winner, uint256 reward);
+    event RewardClaimed(address indexed winner, uint256 reward);
     event RedeemRequested(address indexed user, uint256 amount, uint256 unlockAt);
+    event RedeemClaimed(address indexed user, uint256 amount);
 
     error RoundNotEnded();
     error ZeroDeposit();
     error ZeroRedeem();
     error RedeemNotUnlocked();
+    error NoPendingReward();
+    error InsufficientLiquidity();
     error InsufficientFoMON();
 
     constructor(address _fomonToken) {
@@ -45,37 +52,70 @@ contract GameVault {
         emit Deposited(msg.sender, msg.value, deadline);
     }
 
-    /// @notice When deadline passed, anyone can settle. Winner gets 80% of round deposits (simplified: we use vault balance share).
+    /// @notice When deadline passed, anyone can settle. 80% of currently available balance is queued to winner.
+    /// @dev Uses pull-payments to avoid freezing rounds when winner cannot receive ETH.
     function settleRound() external {
         if (block.timestamp < deadline) revert RoundNotEnded();
         address winner = lastDepositor;
-        uint256 vaultBalance = address(this).balance;
-        uint256 reward = (vaultBalance * REWARD_BPS) / 10000;
+        uint256 reward = (_availableLiquidity() * REWARD_BPS) / 10000;
         roundId++;
         deadline = block.timestamp + ROUND_DURATION;
         lastDepositor = address(0);
         if (reward > 0 && winner != address(0)) {
-            (bool ok,) = winner.call{value: reward}("");
-            require(ok, "Transfer failed");
+            pendingRewards[winner] += reward;
+            totalPendingRewards += reward;
+            emit RewardQueued(winner, reward);
         }
         emit RoundSettled(roundId - 1, winner, reward);
     }
 
-    /// @notice Request redeem: lock FoMON and set unlock time. MVP does not implement claimRedeem.
-    /// @dev Multiple calls to this function will accumulate the requested amount and reset the unlock time
-    ///      to 7 days from the most recent call. This means all queued amounts for a user unlock together
-    ///      at the same time, which is always 7 days after the last requestRedeem call.
+    /// @notice Claim queued winner rewards.
+    function claimReward() external {
+        uint256 reward = pendingRewards[msg.sender];
+        if (reward == 0) revert NoPendingReward();
+        pendingRewards[msg.sender] = 0;
+        totalPendingRewards -= reward;
+        (bool ok,) = msg.sender.call{value: reward}("");
+        require(ok, "Reward transfer failed");
+        emit RewardClaimed(msg.sender, reward);
+    }
+
+    /// @notice Request redeem: burn FoMON and queue MON withdrawal.
+    /// @dev Additional requests before unlock do not extend unlock time.
     function requestRedeem(uint256 amount) external {
         if (amount == 0) revert ZeroRedeem();
         if (fomonToken.balanceOf(msg.sender) < amount) revert InsufficientFoMON();
+        uint256 unlockAt = redeemUnlockAt[msg.sender];
+        if (unlockAt == 0 || unlockAt < block.timestamp) {
+            unlockAt = block.timestamp + REDEEM_DELAY;
+            redeemUnlockAt[msg.sender] = unlockAt;
+        }
         redeemAmount[msg.sender] += amount;
-        redeemUnlockAt[msg.sender] = block.timestamp + REDEEM_DELAY;
         fomonToken.burn(msg.sender, amount);
-        emit RedeemRequested(msg.sender, amount, block.timestamp + REDEEM_DELAY);
+        emit RedeemRequested(msg.sender, amount, unlockAt);
+    }
+
+    /// @notice Claim MON after redeem delay.
+    function claimRedeem() external {
+        uint256 amount = redeemAmount[msg.sender];
+        if (amount == 0) revert ZeroRedeem();
+        if (block.timestamp < redeemUnlockAt[msg.sender]) revert RedeemNotUnlocked();
+        if (amount > _availableLiquidity()) revert InsufficientLiquidity();
+        redeemAmount[msg.sender] = 0;
+        redeemUnlockAt[msg.sender] = 0;
+        (bool ok,) = msg.sender.call{value: amount}("");
+        require(ok, "Redeem transfer failed");
+        emit RedeemClaimed(msg.sender, amount);
     }
 
     /// @notice Current countdown end timestamp (for frontend).
     function getDeadline() external view returns (uint256) {
         return deadline;
+    }
+
+    function _availableLiquidity() internal view returns (uint256) {
+        uint256 vaultBalance = address(this).balance;
+        if (vaultBalance <= totalPendingRewards) return 0;
+        return vaultBalance - totalPendingRewards;
     }
 }
