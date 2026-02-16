@@ -1,30 +1,23 @@
 # FoMON3D
 
-[中文版本](README.zh-CN.md) | [Demo Script (CN)](docs/DEMO_SCRIPT.zh-CN.md)
+[中文版本](README.zh-CN.md)
 
 FoMON3D is a trust-bootstrap protocol for AI trading capital on Monad.  
 Our thesis: an AI Agent may be able to trade launchpad MEME assets, but most human capital providers do not trust an agent with direct discretionary funds on day one.  
 FoMON3D solves this by using a game layer to bootstrap capital and attention into an Agent Treasury, making AI-driven treasury operations socially and economically viable.
 
-![FoMON3D game flow](docs/fomon3d-flowchart.svg)
+![FoMON3D game flow](flowchart.png)
 
 ## Monad Hackathon Submission
 
 - Project name: `FoMON3D`
-- Category: Consumer dApp / On-chain Game
+- Track: `Agent+Token Track`
 - Network: Monad
 - Team: FoMON3D
-- Live demo: https://fomon3d.vercel.app/
-- Demo video: `TBD`
-- Contract repo / code: `TBD`
-
-### Requirement Alignment Checklist
-
-- [ ] Working demo on Monad (or testnet) that judges can verify.
-- [x] Clear explanation of what is original in this project.
-- [x] Clear boundary of reused components and dependencies.
-- [x] Explicit explanation of why Monad performance is required.
-- [x] Novel game + token mechanism (not a clone with minor edits).
+- Verifiable live demo on Monad testnet: Completed ([https://fomon3d.vercel.app/](https://fomon3d.vercel.app/))
+- Demo video: [FoMON3D.mov](./FoMON3D.mov)
+- Twitter post: [https://x.com/AgentSocietyX/status/2023184637304975472](https://x.com/AgentSocietyX/status/2023184637304975472)
+- Repository / code: https://github.com/realTaki/FoMON3D
 
 ## 1. What Problem We Solve
 
@@ -44,12 +37,14 @@ FoMON3D introduces a trust-to-capital conversion mechanism with two layers:
 - Round layer (FOMO game): each valid deposit resets a 30s timer; the last depositor wins the round payout.
 - Treasury layer (share system): deposits mint `$FoMON`, representing claims on treasury NAV and future upside.
 
+In the updated flowchart, the central game module is shown as `FoMON 3D`, and capital is routed into an `Agent managed Vault` that executes launchpad strategy on Nad.fun with TWAP sell-outs.
+
 This design reframes participation from pure gambling to staged trust-building:
 - users join through a familiar game primitive,
 - capital accumulates in a structured treasury,
 - agent strategy is funded by a community-formed pool instead of blind upfront delegation.
 
-Non-winning users are not forced into zero-sum loss: they can hold, redeem via queue, or trade (if liquidity exists).
+Non-winning users are not forced into zero-sum loss: they can hold or redeem via queue.
 
 ## 3. Why Monad
 
@@ -147,10 +142,8 @@ Put the printed FoMONToken and GameVault addresses into `frontend/lib/contracts.
 1. **Online**: Open https://fomon3d.vercel.app/ — or run locally: `cd frontend && npm install && npm run dev`, then http://localhost:3000 .
 2. Add Monad Testnet in wallet (RPC and Chain ID above), then connect.
 3. **Deposit MON** → 30s countdown resets, you receive $FoMON 1:1.
-4. When countdown hits zero, the **winner** banner appears; any wallet can click **Settle & start next round** to pay the winner and start the next round.
-5. **Redeem**: In the Redeem section you can queue your $FoMON for the 7-day redeem; queue status is shown on the page.
-
-For local chain: Anvil RPC `http://127.0.0.1:8545`, Chain ID `31337`; configure the deployed addresses in `contracts.ts` for that chain.
+4. When countdown hits zero, the **winner** banner appears; any wallet can click **Settle & start next round** to queue reward and start the next round.
+5. Winner claims queued reward; users can also queue redeem in the Redeem section (7-day window shown on page).
 
 ---
 

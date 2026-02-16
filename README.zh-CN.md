@@ -1,30 +1,23 @@
 # FoMON3D
 
-[English README](README.md) | [演示脚本](docs/DEMO_SCRIPT.zh-CN.md)
+[English README](README.md)
 
 FoMON3D 的核心不是“再做一个链游”，而是为 AI Agent 金库做“信任冷启动”。  
 我们的判断是：AI Agent 也许有能力在 Launchpad 上交易 MEME，但人类出资人并不会在第一天就把资金直接交给 AI 自主操作。  
 FoMON3D 用游戏机制先聚合资金与注意力，再把资金沉淀进 Agent Treasury，让 AI 策略尝试在社会信任和经济激励上都变得可行。
 
-![FoMON3D game flow](docs/fomon3d-flowchart.svg)
+![FoMON3D game flow](flowchart.png)
 
 ## Monad Hackathon 提交信息
 
 - 项目名称：`FoMON3D`
-- 赛道：Consumer dApp / On-chain Game
+- 赛道：`Agent+Token Track`
 - 网络：Monad
 - 团队：FoMON3D
-- 在线演示：https://fomon3d.vercel.app/
-- 演示视频：`TBD`
-- 合约仓库 / 代码：`TBD`
-
-### 要求对齐检查清单
-
-- [ ] 在 Monad（或测试网）上可验证的可运行演示。
-- [x] 清晰说明本项目原创部分。
-- [x] 清晰划分复用组件和外部依赖边界。
-- [x] 明确解释为何该项目需要 Monad 性能特性。
-- [x] 具备新颖玩法与代币机制（非简单改壳复制）。
+- 可验证在线演示（Monad 测试网）：已完成（[https://fomon3d.vercel.app/](https://fomon3d.vercel.app/)）
+- 演示视频：[FoMON3D.mov](./FoMON3D.mov)
+- 推文：[https://x.com/AgentSocietyX/status/2023184637304975472](https://x.com/AgentSocietyX/status/2023184637304975472)
+- 仓库 / 代码：https://github.com/realTaki/FoMON3D
 
 ## 1. 我们解决的问题
 
@@ -44,12 +37,14 @@ FoMON3D 的创新是“把信任转化为资本”，通过双层结构实现：
 - 回合层（FOMO 游戏）：每次有效存入都会重置 30 秒倒计时，最后存入者拿走本轮奖励。
 - 金库层（份额系统）：用户存入后铸造 `$FoMON`，对应金库净值（NAV）和未来收益敞口。
 
+在更新后的流程图中，中心模块标注为 `FoMON 3D`，资金沉淀到 `Agent managed Vault`，并通过 Nad.fun 发射板策略与 TWAP 卖出路径形成收益闭环。
+
 这使得用户参与不再只是一次性博彩，而是阶段性的信任建立：
 - 先通过熟悉的游戏机制进入，
 - 再通过结构化金库沉淀资金，
 - 最终由社区形成的资金池支持 Agent 策略运作，而不是盲目信任式委托。
 
-未获胜用户并非零和归零，可继续持有、排队赎回，或在有流动性时交易。
+未获胜用户并非零和归零，可继续持有或进入赎回队列。
 
 ## 3. 为什么是 Monad
 
@@ -147,10 +142,8 @@ PRIVATE_KEY=<你的私钥> forge script script/Deploy.s.sol --rpc-url https://te
 1. **在线**：打开 https://fomon3d.vercel.app/ 即可体验；或本地运行：`cd frontend && npm install && npm run dev`，再访问 http://localhost:3000 。
 2. 钱包添加 Monad 测试网（RPC 与 Chain ID 见上表），连接钱包。
 3. **存入 MON** → 倒计时重置 30s，获得等量 $FoMON。
-4. 倒计时归零后出现**赢家横幅**，任意钱包可点 **Settle & start next round** 结算并开启下一轮。
-5. **赎回**：在 Redeem 区可把当前 $FoMON 加入 7 天赎回队列（队列状态在页面上展示）。
-
-本地链：Anvil RPC `http://127.0.0.1:8545`、Chain ID `31337`，部署后同样在 `contracts.ts` 中配置对应地址。
+4. 倒计时归零后出现**赢家横幅**，任意钱包可点 **Settle & start next round** 进行奖励入队并开启下一轮。
+5. 赢家可领取已入队奖励；其他用户可在 Redeem 区加入 7 天赎回队列（页面会展示队列状态）。
 
 ---
 
