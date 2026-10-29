@@ -116,7 +116,7 @@ Monad 是该交互模型的匹配执行环境。
 
 ## 12. Demo 流程与合约信息
 
-**环境**：Node.js >= 20（前端）、Foundry（合约）。
+**环境**：Node.js 24.x（前端，见 `frontend/.nvmrc`）、Foundry（合约）。
 
 **合约（Monad 测试网）**
 

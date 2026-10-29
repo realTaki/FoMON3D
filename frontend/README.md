@@ -4,7 +4,7 @@
 
 ## 要求
 
-- Node.js >= 20
+- Node.js 24.x（`.nvmrc` 与 `package.json` 的 `engines.node` 保持同一主版本）
 - 已部署合约并在 `lib/contracts.ts` 中配置当前链的合约地址
 
 ## 安装与运行
