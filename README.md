@@ -116,7 +116,7 @@ For hackathon follow-up, please contact the FoMON3D team.
 
 ## 12. Demo Flow & Contract Info
 
-**Requirements**: Node.js >= 20 (frontend), Foundry (contracts).
+**Requirements**: Node.js 24.x (frontend; see `frontend/.nvmrc`), Foundry (contracts).
 
 **Contracts (Monad Testnet)**
 
